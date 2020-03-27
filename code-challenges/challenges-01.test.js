@@ -9,11 +9,12 @@ Then, write a function named speaker that takes in a string and a callback funct
 ------------------------------------------------------------------------------------------------ */
 
 const greeting = (word) => {
-  return word.toUppercase();
+  return word.toUpperCase();
 };
 const speaker = (message, callback) => {
   return callback(message);
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -32,13 +33,14 @@ Return the modified array.
 ------------------------------------------------------------------------------------------------ */
 
 const addValues = (arr, value) => {
-  arr.push(value)
+  arr.push(value);
 };
 
 const addNumbers = (num, arr, times, callback) => {
-  for (let i=0; i < times; i++) {
+  for (let i = times; i > 0; i--) {
     callback(arr, num);
   }
+  return arr;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -121,7 +123,7 @@ const createList = (availableItems) => {
       list.push (value.name);
     }
   };
-  availableItems.forEach(anon);
+  availableItems.forEach(createList, anon);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -150,7 +152,7 @@ const fizzbuzz = (arr) => {
     } else { 
       outArray.push(value)
     }
-  }
+  };
   arr.forEach(anon);
   return outArray;
 };
