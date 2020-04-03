@@ -89,9 +89,12 @@ const people = [
   new Person('Stan', 'Seattle', 67),
 ];
 
-const sortPeople = (arr) => {
-  arr.sort((a,b) => a.lastName > b.lastName);
-  return arr;
+const sortPeople = (arr) => {   
+  return arr.sort((a, b) => 
+  a.lastName > b.lastName ? 1 :
+  (a.lastName < b.lastName ? -1 :
+    0));
+ 
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -135,7 +138,7 @@ const meetings = [
 ];
 
 const sortMeetingsByDay = (arr) => {
-  // Solution code here...
+  
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -146,7 +149,7 @@ You DO NOT need to use your solution to Challenge 9 in completing Challenge 10.
 ------------------------------------------------------------------------------------------------ */
 
 const sortSchedule = (arr) => {
-  // Solution code here...
+  
 };
 
 /* ------------------------------------------------------------------------------------------------
