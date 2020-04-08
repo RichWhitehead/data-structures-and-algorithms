@@ -14,6 +14,7 @@ const courseInfo = { name: 'Code 301', duration: { dayTrack: '4 weeks', eveningT
 
 const getCourseKeys = (obj) => {
   // Solution code here...
+  return Object.keys(obj);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -71,6 +72,7 @@ let characters = [
 const getHouses = (arr) => {
   let houses = [];
   // Solution code here...
+  arr.forEach((house)=>houses.push(house.house));
   return houses;
 };
 
@@ -88,6 +90,15 @@ hasChildrenValues(characters, 'Sansa') will return false
 
 const hasChildrenValues = (arr, character) => {
   // Solution code here...
+  for (let i = 0; i < arr.length; i ++){
+    if (character === arr[i].name){
+      if (arr[i].children.length === 0){
+        return false;
+      }else {
+        return true;
+      }
+    }
+  }
 
 };
 
@@ -101,6 +112,16 @@ The input and output of this function are the same as the input and output from 
 
 const hasChildrenEntries = (arr, character) => {
   // Solution code here...
+  for (let i = 0; i < arr.length; i ++){
+    if (character === arr[i].name){
+      if (arr[i].children.length === 0){
+        return false;
+      }else {
+        return true;
+      }
+    }
+  }
+
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -111,6 +132,11 @@ Write a function named totalCharacters that takes in an array and returns the nu
 
 const totalCharacters = (arr) => {
   // Solution code here...
+  let result = 0;
+  arr.forEach(item => result++);
+  arr. forEach(item => item.spouse ? result ++ : '');
+  arr.forEach(item => result += item.children.length);
+  return result;
 };
 
 /* ------------------------------------------------------------------------------------------------
