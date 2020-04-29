@@ -23,9 +23,16 @@ const alkiBeach = [33, 31, 147, 130, 27, 93, 38, 126, 141, 63, 46, 17];
 const cookieStores = [firstPike, seaTac, seattleCenter, capHill, alkiBeach];
 
 const grandTotal = (stores) => {
-  // Solution code here...
-
+  let hourlySales = [];
+  let acum = 0;
+  for (let i = 0; i < hoursOpen.length; i++) {
+    acum = firstPike[i] + seaTac[i] + seattleCenter[i] + capHill[i] + alkiBeach[i];
+    hourlySales.push(acum);
+  }
+  return hourlySales;
 };
+
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
@@ -38,7 +45,14 @@ Write a function named salesData that uses forEach to iterate over the hourlySal
 ------------------------------------------------------------------------------------------------ */
 
 const salesData = (hours, data) => {
-  // Solution code here...
+  let hourlySales = [];
+  data.forEach((hour , idx)=> {
+    hourlySales.push( {
+      sales: `${hour} cookies`,
+      time: hours[idx],
+    });
+  });
+  return hourlySales;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -49,18 +63,18 @@ Write a function named howManyTreats that will return the quantity of treats you
 
 const errands = [
   { store: 'Grocery store',
-    items: [ { name: 'Eggs', quantity: 12 }, { name: 'Milk', quantity: 1 }, { name: 'Apples', quantity: 3 }]
+    items: [ { name: 'Eggs', quantity: 12 }, { name: 'Milk', quantity: 1 }, { name: 'Apples', quantity: 3 }],
   },
   { store: 'Drug store',
-    items: [ { name: 'Toothpaste', quantity: 1 }, { name: 'Toothbrush', quantity: 3 }, { name: 'Mouthwash',quantity: 1 } ]
+    items: [ { name: 'Toothpaste', quantity: 1 }, { name: 'Toothbrush', quantity: 3 }, { name: 'Mouthwash',quantity: 1 } ],
   },
   { store: 'Pet store',
-    items: [ { name: 'Cans of food', quantity: 8 }, { name: 'Treats', quantity: 24 }, { name: 'Leash', quantity: 1 } ]
-  }
+    items: [ { name: 'Cans of food', quantity: 8 }, { name: 'Treats', quantity: 24 }, { name: 'Leash', quantity: 1 } ],
+  },
 ];
 
 const howManyTreats = (arr) => {
-  // Solution code here...
+  return arr[2].items[1].quantity;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -82,7 +96,7 @@ The top row of the board is considered row zero and row numbers increase as they
 ------------------------------------------------------------------------------------------------ */
 
 const battleship = (board, row, col) => {
-  //  Solution code here...
+  return board[row] [col] === '#' ? 'hit' : 'miss';
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -94,7 +108,13 @@ For example, the following input returns a product of 720: [[1,2], [3,4], [5,6]]
 ------------------------------------------------------------------------------------------------ */
 
 const calculateProduct = (numbers) => {
-  // Solution code here...
+  let something = 1;
+  for(let i = 0; i < numbers.length; i++) {
+    for(let j = 0; j < numbers[i].length; j++) {
+      something *= numbers[i][j];
+    }
+  }
+  return something;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -186,7 +206,7 @@ describe('Testing challenge 2', () => {
       { sales: '276 cookies', time: '5 p.m.' },
       { sales: '207 cookies', time: '6 p.m.' },
       { sales: '161 cookies', time: '7 p.m.' },
-      { sales: '169 cookies', time: '8 p.m.' }
+      { sales: '169 cookies', time: '8 p.m.' },
     ]);
 
     expect(salesData(hoursOpen, grandTotal(cookieStores)).length).toStrictEqual(hoursOpen.length);
