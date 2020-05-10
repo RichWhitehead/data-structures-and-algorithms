@@ -7,7 +7,7 @@ For example, ['apple', 'banana', 'MacGyver'] returns ['Apple', 'Banana', 'MacGyv
 ------------------------------------------------------------------------------------------------ */
 
 const toTitleCase = (arr) => {
-  // Solution code here...
+  return arr.map(element => element.charAt(0).toUpperCase() + element.slice(1));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -35,7 +35,7 @@ let starWarsData = [{
   skin_color: 'gold',
   eye_color: 'yellow',
   birth_year: '112BBY',
-  gender: 'n/a'
+  gender: 'n/a',
 },
 {
   name: 'R2-D2',
@@ -45,7 +45,7 @@ let starWarsData = [{
   skin_color: 'white, blue',
   eye_color: 'red',
   birth_year: '33BBY',
-  gender: 'n/a'
+  gender: 'n/a',
 },
 {
   name: 'Darth Vader',
@@ -55,7 +55,7 @@ let starWarsData = [{
   skin_color: 'white',
   eye_color: 'yellow',
   birth_year: '41.9BBY',
-  gender: 'male'
+  gender: 'male',
 },
 {
   name: 'Leia Organa',
@@ -65,7 +65,7 @@ let starWarsData = [{
   skin_color: 'light',
   eye_color: 'brown',
   birth_year: '19BBY',
-  gender: 'female'
+  gender: 'female',
 },
 {
   name: 'Pex Kylar',
@@ -75,12 +75,19 @@ let starWarsData = [{
   skin_color: 'brown',
   eye_color: 'none',
   birth_year: '27BBY',
-  gender: 'n/a'
+  gender: 'n/a',
 }];
 
 let biggerThanLuke = (arr) => {
-  // Solution code here...
+  let newArr = [];
+  arr.forEach(element => {
+    if (element.mass > 77) {
+      newArr.push(element.name);
+    }
+  });
+  return newArr.join(' - ');
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -95,8 +102,17 @@ This data could be sorted by name or price.
 ------------------------------------------------------------------------------------------------ */
 
 const sortBy = (property, arr) => {
-  // Solution code here...
+  return arr.sort((a,b) => {
+    if (a[property] < b[property]) {
+      return -1;
+    } else if (a[property] > b[property]) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
 };
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 4
@@ -108,7 +124,7 @@ https://secure.com returns true because the URL is secure
 https:/missingslash.org returns false because the URL is malformed
 ------------------------------------------------------------------------------------------------ */
 const isSecure = (url) => {
-// Solution code here...
+  return url.includes('https://');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -158,7 +174,7 @@ describe('Testing challenge 3', () => {
     expect(sortBy('price', [
       {name: 'Sweatshirt', price: 45},
       {name: 'Bookmark', price: 2.50},
-      {name: 'Tote bag', price: 15}
+      {name: 'Tote bag', price: 15},
     ])).toStrictEqual([
       {name: 'Bookmark', price: 2.50},
       {name: 'Tote bag', price: 15},
@@ -172,7 +188,7 @@ describe('Testing challenge 3', () => {
     expect(sortBy('name', [
       {name: 'Sweatshirt', price: 45},
       {name: 'Bookmark', price: 2.50},
-      {name: 'Tote bag', price: 15}
+      {name: 'Tote bag', price: 15},
     ])).toStrictEqual([
       {name: 'Bookmark', price: 2.50},
       {name: 'Sweatshirt', price: 45},
